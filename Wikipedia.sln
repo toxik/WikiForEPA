@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wikipedia", "Wikipedia\Wikipedia.csproj", "{722F3060-C805-4617-9231-CD006180CD8F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wikipedia", "Wikipedia\Wikipedia.csproj", "{F6A2B036-F1E2-40EB-BF62-36DE65BBA7A4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,10 +9,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{722F3060-C805-4617-9231-CD006180CD8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{722F3060-C805-4617-9231-CD006180CD8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{722F3060-C805-4617-9231-CD006180CD8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{722F3060-C805-4617-9231-CD006180CD8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6A2B036-F1E2-40EB-BF62-36DE65BBA7A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6A2B036-F1E2-40EB-BF62-36DE65BBA7A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6A2B036-F1E2-40EB-BF62-36DE65BBA7A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6A2B036-F1E2-40EB-BF62-36DE65BBA7A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
