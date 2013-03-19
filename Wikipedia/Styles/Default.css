@@ -1,0 +1,23 @@
+﻿table {
+    width: 100%;
+}
+
+td {
+    border: none;
+    padding: 10px;
+}
+
+td > p {
+    margin-left: 20px;
+}
+
+
+.domainheader 
+{
+    float : left;
+    padding: 5px;
+}
+
+.domainheader h2 {
+	font-size: 16px;
+}
