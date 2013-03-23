@@ -34,6 +34,20 @@ namespace Wikipedia
                     Roles.RemoveUserFromRole(username, rolename);
                 else chk.Checked = true;
         }
-        
+
+        public void ItemDataBound(object sender, ListViewItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListViewItemType.DataItem)
+            {
+                MembershipUser row = e.Item.DataItem as MembershipUser;
+                CheckBox chk;
+
+                chk = e.Item.FindControl("Editor") as CheckBox;
+                chk.Attributes.Add("Name", row.UserName);
+
+                chk = e.Item.FindControl("Admin") as CheckBox;
+                chk.Attributes.Add("Name", row.UserName);
+            }
+        }
     }
 }
