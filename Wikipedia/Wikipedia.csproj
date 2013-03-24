@@ -82,6 +82,8 @@
     <Content Include="App_Data\Wikipedia_log.ldf">
       <DependentUpon>Wikipedia.mdf</DependentUpon>
     </Content>
+    <Content Include="Article.aspx" />
+    <Content Include="ArticleNew.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Layouts\Site.Master" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
@@ -138,6 +140,27 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Article.aspx.cs">
+      <DependentUpon>Article.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Article.aspx.designer.cs">
+      <DependentUpon>Article.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ArticleNew.aspx.cs">
+      <DependentUpon>ArticleNew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ArticleNew.aspx.designer.cs">
+      <DependentUpon>ArticleNew.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Article.cs" />
+    <Compile Include="Data\Domain.cs" />
+    <Compile Include="Data\Wikipedia_EDM.Designer.cs">
+      <DependentUpon>Wikipedia_EDM.edmx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -157,7 +180,12 @@
       <DependentUpon>Users.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EntityDeploy Include="Data\Wikipedia_EDM.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Wikipedia_EDM.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
