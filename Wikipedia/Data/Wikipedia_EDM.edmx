@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="WikipediaModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="WikipediaModelStoreContainer">
+          <EntitySet Name="Articles" EntityType="WikipediaModel.Store.Articles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Domains" EntityType="WikipediaModel.Store.Domains" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Images" EntityType="WikipediaModel.Store.Images" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Versions" EntityType="WikipediaModel.Store.Versions" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Articles_Domains" Association="WikipediaModel.Store.FK_Articles_Domains">
+            <End Role="Domains" EntitySet="Domains" />
+            <End Role="Articles" EntitySet="Articles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Versions_Articles" Association="WikipediaModel.Store.FK_Versions_Articles">
+            <End Role="Articles" EntitySet="Articles" />
+            <End Role="Versions" EntitySet="Versions" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Articles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DomainId" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="128" />
+          <Property Name="IsProtected" Type="bit" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Domains">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="Images">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ContentType" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="ContentLength" Type="int" Nullable="false" />
+          <Property Name="Content" Type="image" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Versions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ArticleId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="Content" Type="text" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Articles_Domains">
+          <End Role="Domains" Type="WikipediaModel.Store.Domains" Multiplicity="1" />
+          <End Role="Articles" Type="WikipediaModel.Store.Articles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Domains">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Articles">
+              <PropertyRef Name="DomainId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Versions_Articles">
+          <End Role="Articles" Type="WikipediaModel.Store.Articles" Multiplicity="1" />
+          <End Role="Versions" Type="WikipediaModel.Store.Versions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Versions">
+              <PropertyRef Name="ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WikipediaModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="WikipediaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Articles" EntityType="WikipediaModel.Article" />
+          <EntitySet Name="Domains" EntityType="WikipediaModel.Domain" />
+          <EntitySet Name="Images" EntityType="WikipediaModel.Image" />
+          <EntitySet Name="Versions" EntityType="WikipediaModel.Version" />
+          <AssociationSet Name="FK_Articles_Domains" Association="WikipediaModel.FK_Articles_Domains">
+            <End Role="Domain" EntitySet="Domains" />
+            <End Role="Article" EntitySet="Articles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Versions_Articles" Association="WikipediaModel.FK_Versions_Articles">
+            <End Role="Article" EntitySet="Articles" />
+            <End Role="Version" EntitySet="Versions" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="DomainId" Nullable="false" />
+          <Property Type="String" Name="UserName" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsProtected" Nullable="false" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="false" />
+          <NavigationProperty Name="Domain" Relationship="WikipediaModel.FK_Articles_Domains" FromRole="Article" ToRole="Domain" />
+          <NavigationProperty Name="Versions" Relationship="WikipediaModel.FK_Versions_Articles" FromRole="Article" ToRole="Version" />
+        </EntityType>
+        <EntityType Name="Domain">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Articles" Relationship="WikipediaModel.FK_Articles_Domains" FromRole="Domain" ToRole="Article" />
+        </EntityType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Binary" Name="Content" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Type="String" Name="ContentType" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="ContentLength" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Version">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ArticleId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Content" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="false" />
+          <NavigationProperty Name="Article" Relationship="WikipediaModel.FK_Versions_Articles" FromRole="Version" ToRole="Article" />
+        </EntityType>
+        <Association Name="FK_Articles_Domains">
+          <End Type="WikipediaModel.Domain" Role="Domain" Multiplicity="1" />
+          <End Type="WikipediaModel.Article" Role="Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Domain">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Article">
+              <PropertyRef Name="DomainId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Versions_Articles">
+          <End Type="WikipediaModel.Article" Role="Article" Multiplicity="1" />
+          <End Type="WikipediaModel.Version" Role="Version" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Version">
+              <PropertyRef Name="ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WikipediaModelStoreContainer" CdmEntityContainer="WikipediaEntities">
+          <EntitySetMapping Name="Articles">
+            <EntityTypeMapping TypeName="WikipediaModel.Article">
+              <MappingFragment StoreEntitySet="Articles">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="IsProtected" ColumnName="IsProtected" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="DomainId" ColumnName="DomainId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Domains">
+            <EntityTypeMapping TypeName="WikipediaModel.Domain">
+              <MappingFragment StoreEntitySet="Domains">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Images">
+            <EntityTypeMapping TypeName="WikipediaModel.Image">
+              <MappingFragment StoreEntitySet="Images">
+                <ScalarProperty Name="ContentLength" ColumnName="ContentLength" />
+                <ScalarProperty Name="ContentType" ColumnName="ContentType" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Versions">
+            <EntityTypeMapping TypeName="WikipediaModel.Version">
+              <MappingFragment StoreEntitySet="Versions">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Wikipedia_EDM">
+        <EntityTypeShape EntityType="WikipediaModel.Article" Width="1.5" PointX="3.75" PointY="1.125" Height="2.0853483072916661" />
+        <EntityTypeShape EntityType="WikipediaModel.Domain" Width="1.5" PointX="1.125" PointY="1.375" Height="1.4279589843750031" />
+        <EntityTypeShape EntityType="WikipediaModel.Image" Width="1.5" PointX="3.875" PointY="3.625" Height="1.2636116536458388" />
+        <EntityTypeShape EntityType="WikipediaModel.Version" Width="1.5" PointX="6.5" PointY="1.25" Height="1.9210009765625031" />
+        <AssociationConnector Association="WikipediaModel.FK_Articles_Domains" >
+          <ConnectorPoint PointX="2.625" PointY="2.0889794921875016" />
+          <ConnectorPoint PointX="3.75" PointY="2.0889794921875016" />
+        </AssociationConnector>
+        <AssociationConnector Association="WikipediaModel.FK_Versions_Articles" >
+          <ConnectorPoint PointX="5.25" PointY="2.2105004882812516" />
+          <ConnectorPoint PointX="6.5" PointY="2.2105004882812516" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
