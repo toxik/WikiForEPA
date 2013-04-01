@@ -83,6 +83,7 @@
       <DependentUpon>Wikipedia.mdf</DependentUpon>
     </Content>
     <Content Include="Article.aspx" />
+    <Content Include="ArticleEdit.aspx" />
     <Content Include="ArticleNew.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Layouts\Site.Master" />
@@ -146,6 +147,12 @@
     </Compile>
     <Compile Include="Article.aspx.designer.cs">
       <DependentUpon>Article.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ArticleEdit.aspx.cs">
+      <DependentUpon>ArticleEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ArticleEdit.aspx.designer.cs">
+      <DependentUpon>ArticleEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="ArticleNew.aspx.cs">
       <DependentUpon>ArticleNew.aspx</DependentUpon>
