@@ -162,6 +162,7 @@
     </Compile>
     <Compile Include="ArticleEdit.aspx.cs">
       <DependentUpon>ArticleEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ArticleEdit.aspx.designer.cs">
       <DependentUpon>ArticleEdit.aspx</DependentUpon>
@@ -188,6 +189,7 @@
     </Compile>
     <Compile Include="ImageUpload.aspx.cs">
       <DependentUpon>ImageUpload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ImageUpload.aspx.designer.cs">
       <DependentUpon>ImageUpload.aspx</DependentUpon>

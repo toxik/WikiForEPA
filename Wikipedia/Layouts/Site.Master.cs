@@ -11,6 +11,23 @@ namespace Wikipedia
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Page.User.IsInRole("Admin"))
+            {
+                admin.Visible = false;
+            }
+
+            if (!IsPostBack)
+                SearchBar.Text = Request.QueryString["q"];
         }
+
+
+
+        protected void SearchButton_Click1(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Search.aspx?q=" + SearchBar.Text);
+
+        }
+
+
     }
 }

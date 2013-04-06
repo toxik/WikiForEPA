@@ -4,13 +4,84 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
 "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-<head runat="server">
+<head id="Head1" runat="server">
     <title>Wikipedia</title>
+     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link href="~/Styles/Main.css" rel="stylesheet" type="text/css" />
     <asp:ContentPlaceHolder ID="HeadContent" runat="server" />
+   
     <style></style>
 </head>
 <body>
-    <form runat="server">
+    <form id="Form1" runat="server">
+    <div id="sidebar">
+        <a id="A1" href="~" runat="server">
+            <img id="Img1" runat="server" src="~/Images/copil.jpg" alt="Logo" /></a>
+        <div id="admin" runat="server">
+        <h3>Administrate</h3>
+            <ul>
+                <li>
+                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Users.aspx">Users</asp:HyperLink>
+            </ul>
+        </div>
+        <h3>
+            Categories</h3>
+        <asp:ListView ID="Domains" runat="server" DataSourceID="Domains_EDS">
+            <ItemTemplate>
+                <li><a id="A1" runat="server" href='<%# "~/Domain.aspx?id=" + Eval("Id") %>'>
+                    <%# Eval("Name") %></a> </li>
+            </ItemTemplate>
+            <LayoutTemplate>
+                <ul>
+                    <li runat="server" id="itemPlaceholder" />
+                </ul>
+            </LayoutTemplate>
+        </asp:ListView>
+        <asp:EntityDataSource ID="Domains_EDS" runat="server" ConnectionString="name=WikipediaEntities"
+            DefaultContainerName="WikipediaEntities" EnableFlattening="False" EntitySetName="Domains">
+        </asp:EntityDataSource>
+        <h3>
+            Features</h3>
+        <ul>
+            <li><a id="A2" href="~/ImageUpload.aspx" runat="server">Upload Image</a></li>
+            <li><a id="A3" href="~/About.aspx" runat="server">About</a></li>
+        </ul>
+    </div>
+    <div id="wrapper">
+        <div id="header">
+            <div id="profile">
+                <asp:LoginView ID="LoginView1" runat="server" EnableViewState="false">
+                    <AnonymousTemplate>
+                        <a id="A2" href="~/Account/Login.aspx" runat="server">Log In</a> <span class="separator">
+                            |</span> <a id="A3" href="~/Account/Register.aspx" runat="server">Register</a>
+                    </AnonymousTemplate>
+                    <LoggedInTemplate>
+                        <a id="A4" class="username" href="~/Account/ChangePassword.aspx" runat="server">
+                            <asp:LoginName ID="LoginName1" runat="server" />
+                        </a><span class="separator">|</span>
+                        <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutAction="Refresh" LogoutText="Logout" />
+                    </LoggedInTemplate>
+                </asp:LoginView>
+            </div>
+            
+            <div class="clear">
+            </div>
+            <div id="search">
+                <asp:Panel ID="Panel1" runat="server" DefaultButton="SearchButton">
+                    <asp:TextBox ID="SearchBar" runat="server" CssClass="input-medium search-query" />
+                    <asp:Button ID="SearchButton" runat="server" ClientIDMode="AutoID"
+                        OnClick="SearchButton_Click1" Text="Search" CssClass="btn btn-info"/>
+                </asp:Panel>
+               
+            </div>
+            <div id="actions">
+                <asp:ContentPlaceHolder ID="ActionsBar" runat="server" />
+            </div>
+        </div>
+        <div id="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </div>
+    </div>
     </form>
 </body>
 </html>
