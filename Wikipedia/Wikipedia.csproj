@@ -85,7 +85,19 @@
     <Content Include="Article.aspx" />
     <Content Include="ArticleEdit.aspx" />
     <Content Include="ArticleNew.aspx" />
+    <Content Include="Dependencies\Textile.dll" />
     <Content Include="Global.asax" />
+    <Content Include="Images\aspnet.jpg" />
+    <Content Include="Images\copil.jpg" />
+    <Content Include="Images\cranberries1.jpg" />
+    <Content Include="Images\images.jpg" />
+    <Content Include="Images\jesus.jpg" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\RoxetteCOVER.jpg" />
+    <Content Include="Images\the_cranberries_zombie.jpg" />
+    <Content Include="Images\wiki.gif" />
+    <Content Include="Images\wiki2.jpg" />
+    <Content Include="ImageUpload.aspx" />
     <Content Include="Layouts\Site.Master" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
@@ -171,6 +183,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Image.ashx.cs">
+      <DependentUpon>Image.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ImageUpload.aspx.cs">
+      <DependentUpon>ImageUpload.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ImageUpload.aspx.designer.cs">
+      <DependentUpon>ImageUpload.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Layouts\Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -192,6 +213,9 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Wikipedia_EDM.Designer.cs</LastGenOutput>
     </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Image.ashx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
