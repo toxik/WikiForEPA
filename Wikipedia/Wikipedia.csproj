@@ -85,6 +85,7 @@
     <Content Include="Article.aspx" />
     <Content Include="ArticleEdit.aspx" />
     <Content Include="ArticleNew.aspx" />
+    <Content Include="Default.aspx" />
     <Content Include="Dependencies\Textile.dll" />
     <Content Include="Global.asax" />
     <Content Include="Images\aspnet.jpg" />
@@ -180,6 +181,12 @@
       <DependentUpon>Wikipedia_EDM.edmx</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
