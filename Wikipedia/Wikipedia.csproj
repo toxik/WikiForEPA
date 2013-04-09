@@ -85,6 +85,7 @@
     <Content Include="Article.aspx" />
     <Content Include="ArticleEdit.aspx" />
     <Content Include="ArticleNew.aspx" />
+    <Content Include="ArticleVersions.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Dependencies\Textile.dll" />
     <Content Include="Global.asax" />
@@ -174,6 +175,12 @@
     </Compile>
     <Compile Include="ArticleNew.aspx.designer.cs">
       <DependentUpon>ArticleNew.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ArticleVersions.aspx.cs">
+      <DependentUpon>ArticleVersions.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ArticleVersions.aspx.designer.cs">
+      <DependentUpon>ArticleVersions.aspx</DependentUpon>
     </Compile>
     <Compile Include="Data\Article.cs" />
     <Compile Include="Data\Domain.cs" />
