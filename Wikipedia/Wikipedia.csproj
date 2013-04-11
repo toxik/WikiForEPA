@@ -88,6 +88,7 @@
     <Content Include="ArticleVersions.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Dependencies\Textile.dll" />
+    <Content Include="Domain.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Images\aspnet.jpg" />
     <Content Include="Images\copil.jpg" />
@@ -178,6 +179,7 @@
     </Compile>
     <Compile Include="ArticleVersions.aspx.cs">
       <DependentUpon>ArticleVersions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ArticleVersions.aspx.designer.cs">
       <DependentUpon>ArticleVersions.aspx</DependentUpon>
@@ -191,12 +193,21 @@
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Domain.aspx.cs">
+      <DependentUpon>Domain.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Domain.aspx.designer.cs">
+      <DependentUpon>Domain.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="Image.ashx.cs">
       <DependentUpon>Image.ashx</DependentUpon>
